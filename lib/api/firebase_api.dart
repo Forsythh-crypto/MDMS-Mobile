@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
-import '../screens/login_screen.dart'; // Assuming this is a new required import for NotificationsScreen
 
 // Background Message Handler - Needs to be a top level function
 @pragma('vm:entry-point')

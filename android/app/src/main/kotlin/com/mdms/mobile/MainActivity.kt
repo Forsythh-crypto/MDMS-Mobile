@@ -1,4 +1,4 @@
-package com.example.docusys_mobile
+package com.mdms.mobile
 
 import io.flutter.embedding.android.FlutterActivity
 
