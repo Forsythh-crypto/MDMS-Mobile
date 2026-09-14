@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
     );
 
     return MaterialApp(
-      title: 'DocuSys Mobile',
+      title: 'Document Management System',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: GoogleFonts.inter().fontFamily,

@@ -113,28 +113,101 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   Future<void> _showLogoutConfirmation() async {
     return showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Confirm Logout', style: TextStyle(fontWeight: FontWeight.bold)),
-        content: const Text('Are you sure you want to log out from your account?'),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Cancel', style: TextStyle(color: Colors.grey.shade700, fontWeight: FontWeight.bold)),
+      builder: (context) => Dialog(
+        backgroundColor: Colors.white,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        insetPadding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: const Color(0xFFFEE2E2),
+                  shape: BoxShape.circle,
+                  border: Border.all(color: const Color(0xFFFECACA), width: 1),
+                ),
+                child: const Center(
+                  child: Icon(Icons.logout_rounded, color: Color(0xFFEF4444), size: 26),
+                ),
+              ),
+              const SizedBox(height: 18),
+              const Text(
+                'Confirm Sign Out',
+                style: TextStyle(
+                  fontSize: 19,
+                  fontWeight: FontWeight.w800,
+                  color: Color(0xFF0F172A),
+                  letterSpacing: -0.3,
+                ),
+              ),
+              const SizedBox(height: 8),
+              const Text(
+                'Are you sure you want to log out of Document Management System? You will need to sign in again to receive push alerts.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF64748B),
+                  height: 1.45,
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.pop(context),
+                      style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        side: const BorderSide(color: Color(0xFFE2E8F0)),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Cancel',
+                        style: TextStyle(
+                          color: Color(0xFF475569),
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _logout();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFEF4444),
+                        foregroundColor: Colors.white,
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        elevation: 0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                      ),
+                      child: const Text(
+                        'Log Out',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _logout();
-            },
-            style: ElevatedButton.styleFrom(
-              backgroundColor: primaryRed,
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-            ),
-            child: const Text('Logout', style: TextStyle(fontWeight: FontWeight.bold)),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -438,62 +511,111 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9FAFB),
+      backgroundColor: const Color(0xFFF8FAFC),
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         slivers: [
           SliverAppBar(
-            expandedHeight: 120.0,
+            expandedHeight: 125.0,
             floating: true,
             pinned: true,
             elevation: 0,
-            backgroundColor: primaryRed,
+            backgroundColor: primaryDark,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding: const EdgeInsets.only(left: 20, bottom: 16, right: 20),
-              title: const Text(
-                'NOTIFICATIONS',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 1.2,
-                  fontSize: 18,
-                ),
-              ),
-              background: Stack(
-                fit: StackFit.expand,
+              titlePadding: const EdgeInsets.only(left: 20, bottom: 18, right: 20),
+              title: Row(
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(color: primaryRed),
-                  // Decorative background pattern
-                  Positioned(
-                    right: -50,
-                    top: -50,
-                    child: Icon(Icons.notifications_active, size: 200, color: Colors.white.withOpacity(0.05)),
+                  const Text(
+                    'NOTIFICATIONS',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1.5,
+                      fontSize: 18,
+                    ),
                   ),
+                  if (_notifications.isNotEmpty) ...[
+                    const SizedBox(width: 10),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 2.5),
+                      decoration: BoxDecoration(
+                        color: accentSky.withOpacity(0.2),
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(color: accentSky.withOpacity(0.45), width: 1),
+                      ),
+                      child: Text(
+                        '${_notifications.length}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w800,
+                          letterSpacing: 0.5,
+                        ),
+                      ),
+                    ),
+                  ],
                 ],
+              ),
+              background: Container(
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [primaryDark, Color(0xFF1E1B4B), primaryIndigoDark],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                ),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Positioned(
+                      right: -30,
+                      top: -30,
+                      child: Icon(
+                        Icons.mark_email_read_rounded,
+                        size: 190,
+                        color: Colors.white.withOpacity(0.05),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             actions: [
-              IconButton(
-                icon: const Icon(Icons.refresh_rounded, color: Colors.white),
-                tooltip: 'Refresh',
-                onPressed: () {
-                  setState(() => _isLoading = true);
-                  _fetchNotifications();
-                },
+              Container(
+                margin: const EdgeInsets.only(right: 6),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.12),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.refresh_rounded, color: Colors.white, size: 20),
+                  tooltip: 'Refresh',
+                  onPressed: () {
+                    setState(() => _isLoading = true);
+                    _fetchNotifications();
+                  },
+                ),
               ),
-              IconButton(
-                icon: const Icon(Icons.logout_rounded, color: Colors.white),
-                tooltip: 'Logout',
-                onPressed: _showLogoutConfirmation,
+              Container(
+                margin: const EdgeInsets.only(right: 14),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.12),
+                  shape: BoxShape.circle,
+                ),
+                child: IconButton(
+                  icon: const Icon(Icons.logout_rounded, color: Colors.white, size: 20),
+                  tooltip: 'Logout',
+                  onPressed: _showLogoutConfirmation,
+                ),
               ),
-              const SizedBox(width: 8),
             ],
           ),
           // Loading State
           if (_isLoading)
             const SliverFillRemaining(
               child: Center(
-                child: CircularProgressIndicator(color: primaryRed),
+                child: CircularProgressIndicator(color: primaryIndigo),
               ),
             )
           // Empty State
@@ -506,15 +628,30 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: primaryRed.withOpacity(0.05),
+                        color: primaryIndigo.withOpacity(0.08),
                         shape: BoxShape.circle,
                       ),
-                      child: Icon(Icons.mark_email_read_rounded, size: 72, color: primaryRed.withOpacity(0.3)),
+                      child: const Icon(
+                        Icons.mark_email_read_rounded,
+                        size: 64,
+                        color: primaryIndigo,
+                      ),
                     ),
-                    const SizedBox(height: 24),
-                    const Text('All caught up!', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black87)),
-                    const SizedBox(height: 8),
-                    Text('You have no new notifications.', style: TextStyle(fontSize: 15, color: Colors.grey.shade500)),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'All Caught Up!',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w800,
+                        color: Color(0xFF0F172A),
+                        letterSpacing: -0.3,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    const Text(
+                      'No new document notifications at this time.',
+                      style: TextStyle(fontSize: 14, color: Color(0xFF64748B)),
+                    ),
                   ],
                 ),
               ),
@@ -535,48 +672,54 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     final createdAt = notif['created_at']?.toString();
 
                     return Container(
-                      margin: const EdgeInsets.only(bottom: 16),
+                      margin: const EdgeInsets.only(bottom: 14),
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(18),
                         boxShadow: [
                           BoxShadow(
-                            color: primaryRed.withOpacity(0.03),
-                            blurRadius: 15,
-                            offset: const Offset(0, 5),
-                          ),
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.02),
-                            blurRadius: 5,
-                            offset: const Offset(0, 2),
+                            color: const Color(0xFF0F172A).withOpacity(0.04),
+                            blurRadius: 14,
+                            offset: const Offset(0, 4),
                           ),
                         ],
-                        border: Border.all(color: Colors.grey.shade100, width: 1.5),
+                        border: Border.all(color: const Color(0xFFE2E8F0), width: 1.2),
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(20),
+                        borderRadius: BorderRadius.circular(18),
                         child: Material(
                           color: Colors.transparent,
                           child: InkWell(
                             onTap: () => _showDocumentDetails(notifData, id, createdAt),
-                            splashColor: primaryYellow.withOpacity(0.1),
+                            splashColor: primaryIndigo.withOpacity(0.08),
                             highlightColor: Colors.transparent,
                             child: Padding(
-                              padding: const EdgeInsets.all(20.0),
+                              padding: const EdgeInsets.all(18.0),
                               child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  // Leading Icon
+                                  // Leading Icon Badge
                                   Container(
-                                    height: 52,
-                                    width: 52,
+                                    height: 48,
+                                    width: 48,
                                     decoration: BoxDecoration(
-                                      color: primaryRed.withOpacity(0.08),
-                                      borderRadius: BorderRadius.circular(16),
+                                      gradient: const LinearGradient(
+                                        colors: [Color(0xFFEEF2FF), Color(0xFFE0E7FF)],
+                                        begin: Alignment.topLeft,
+                                        end: Alignment.bottomRight,
+                                      ),
+                                      borderRadius: BorderRadius.circular(14),
+                                      border: Border.all(color: const Color(0xFFC7D2FE), width: 1),
                                     ),
-                                    child: const Icon(Icons.description_rounded, color: primaryRed, size: 26),
+                                    child: const Center(
+                                      child: Icon(
+                                        Icons.description_rounded,
+                                        color: primaryIndigoDark,
+                                        size: 24,
+                                      ),
+                                    ),
                                   ),
-                                  const SizedBox(width: 16),
+                                  const SizedBox(width: 14),
                                   // Body
                                   Expanded(
                                     child: Column(
@@ -584,35 +727,65 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                                       children: [
                                         Text(
                                           notifData['title'] ?? 'System Notification',
-                                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: Colors.black87, height: 1.2),
+                                          style: const TextStyle(
+                                            fontWeight: FontWeight.w700,
+                                            fontSize: 15,
+                                            color: Color(0xFF0F172A),
+                                            letterSpacing: -0.2,
+                                            height: 1.25,
+                                          ),
                                         ),
                                         const SizedBox(height: 6),
                                         Text(
-                                          notifData['message'] ?? 'Tap to view document details',
+                                          notifData['message'] ?? 'Tap to view document timeline and details',
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
-                                          style: TextStyle(color: Colors.grey.shade600, fontSize: 14, height: 1.4),
+                                          style: const TextStyle(
+                                            color: Color(0xFF64748B),
+                                            fontSize: 13,
+                                            height: 1.4,
+                                          ),
                                         ),
-                                        const SizedBox(height: 12),
-                                        // Footer
+                                        const SizedBox(height: 10),
+                                        // Footer with timestamp
                                         if (createdAt != null)
-                                          Row(
-                                            children: [
-                                              Icon(Icons.access_time_filled, size: 14, color: primaryYellow),
-                                              const SizedBox(width: 6),
-                                              Text(
-                                                _formatDateString(createdAt),
-                                                style: TextStyle(color: Colors.grey.shade500, fontSize: 12, fontWeight: FontWeight.w600),
-                                              ),
-                                            ],
-                                          )
+                                          Container(
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                                            decoration: BoxDecoration(
+                                              color: const Color(0xFFF1F5F9),
+                                              borderRadius: BorderRadius.circular(6),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              children: [
+                                                const Icon(
+                                                  Icons.schedule_rounded,
+                                                  size: 13,
+                                                  color: Color(0xFF64748B),
+                                                ),
+                                                const SizedBox(width: 5),
+                                                Text(
+                                                  _formatDateString(createdAt),
+                                                  style: const TextStyle(
+                                                    color: Color(0xFF64748B),
+                                                    fontSize: 11,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),
                                   // Trailing chevron
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 14.0, left: 8.0),
-                                    child: Icon(Icons.arrow_forward_ios_rounded, color: Colors.grey.shade300, size: 18),
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 14.0, left: 6.0),
+                                    child: Icon(
+                                      Icons.arrow_forward_ios_rounded,
+                                      color: Color(0xFFCBD5E1),
+                                      size: 14,
+                                    ),
                                   ),
                                 ],
                               ),

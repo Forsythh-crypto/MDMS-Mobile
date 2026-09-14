@@ -27,7 +27,7 @@ String get baseUrl => ihrisApiBaseUrl;
 String get loginEndpoint => ihrisLoginEndpoint;
 String get loginUrl => ihrisLoginUrl;
 
-String get appName => dotenv.env['APP_NAME'] ?? 'DocuSys';
+String get appName => dotenv.env['APP_NAME'] ?? 'Document Management System';
 
 // Legacy IP helper
 String get ipAddress {

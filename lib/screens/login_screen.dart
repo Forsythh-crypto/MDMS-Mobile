@@ -213,26 +213,27 @@ class _LoginScreenState extends State<LoginScreen> {
                     // Modern Gradient Title
                     ShaderMask(
                       shaderCallback: (bounds) => const LinearGradient(
-                        colors: [Colors.white, Color(0xFFC7D2FE), accentSky],
+                        colors: [Colors.white, Color(0xFFE0E7FF), accentSky],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ).createShader(bounds),
                       child: Text(
                         appName.toUpperCase(),
                         style: const TextStyle(
-                          fontSize: 32,
+                          fontSize: 24,
                           fontWeight: FontWeight.w900,
                           color: Colors.white,
-                          letterSpacing: 3.5,
+                          letterSpacing: 2.0,
+                          height: 1.25,
                         ),
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 12),
 
                     // Responsive Modern Pill Subtitle
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 7),
                       decoration: BoxDecoration(
                         color: primaryIndigo.withOpacity(0.15),
                         borderRadius: BorderRadius.circular(30),
@@ -252,19 +253,19 @@ class _LoginScreenState extends State<LoginScreen> {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: accentSky.withOpacity(0.8),
-                                  blurRadius: 6,
-                                  spreadRadius: 1,
+                                  color: accentSky.withOpacity(0.85),
+                                  blurRadius: 8,
+                                  spreadRadius: 2,
                                 ),
                               ],
                             ),
                           ),
                           const SizedBox(width: 8),
-                          Flexible(
+                          const Flexible(
                             child: FittedBox(
                               fit: BoxFit.scaleDown,
                               child: Text(
-                                'MOBILE APP FOR PUSH NOTIFICATIONS',
+                                'DOCUMENT TRACKING & NOTIFICATIONS',
                                 style: TextStyle(
                                   fontSize: 11,
                                   fontWeight: FontWeight.w700,
@@ -278,7 +279,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                    const SizedBox(height: 36),
+                    const SizedBox(height: 32),
 
                     // Glassmorphism Login Card
                     ClipRRect(
@@ -448,6 +449,27 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
+                    ),
+                    const SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.verified_user_rounded,
+                          size: 14,
+                          color: Colors.white.withOpacity(0.4),
+                        ),
+                        const SizedBox(width: 6),
+                        Text(
+                          'Authorized Personnel Portal • 256-bit SSL',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white.withOpacity(0.4),
+                            letterSpacing: 0.2,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
