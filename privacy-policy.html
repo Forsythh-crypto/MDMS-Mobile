@@ -47,7 +47,7 @@
         /* Hero Header */
         .hero {
             position: relative;
-            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.75), rgba(15, 23, 42, 0.95));
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -82,7 +82,7 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .hero-badge .pulse {
@@ -95,29 +95,37 @@
 
         .hero h1 {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 34px;
+            font-size: 32px;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #ffffff;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             background: linear-gradient(135deg, #ffffff 40%, #c7d2fe 80%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .hero p.subtitle {
-            font-size: 16px;
+        .hero h2.app-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
             color: #94a3b8;
-            font-weight: 500;
-            margin-bottom: 12px;
+            letter-spacing: 0.2px;
+            margin-bottom: 16px;
         }
 
         .hero-meta {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            align-items: center;
+            gap: 12px;
             font-size: 13px;
             color: #64748b;
+            font-weight: 500;
+        }
+
+        .hero-meta .dot {
+            color: #475569;
         }
 
         /* Content Cards */
@@ -135,9 +143,9 @@
             border-color: rgba(99, 102, 241, 0.25);
         }
 
-        h2 {
+        h2.section-title {
             font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 21px;
+            font-size: 20px;
             font-weight: 700;
             color: #f8fafc;
             margin-bottom: 18px;
@@ -147,7 +155,7 @@
             letter-spacing: -0.3px;
         }
 
-        h2 .section-num {
+        h2.section-title .section-num {
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -160,8 +168,8 @@
             font-weight: 700;
         }
 
-        h3 {
-            font-size: 16px;
+        h3.subsection-title {
+            font-size: 15px;
             font-weight: 600;
             color: #e2e8f0;
             margin: 20px 0 10px;
@@ -188,19 +196,20 @@
             line-height: 1.6;
         }
 
-        .highlight {
+        .highlight-quote {
             background: rgba(99, 102, 241, 0.08);
             border: 1px solid rgba(99, 102, 241, 0.25);
             border-left: 4px solid var(--primary);
             padding: 18px 22px;
             border-radius: 12px;
-            margin: 20px 0;
+            margin: 22px 0 8px;
         }
 
-        .highlight p {
+        .highlight-quote p {
             margin-bottom: 0;
             color: #c7d2fe;
             font-weight: 500;
+            font-size: 14px;
         }
 
         /* Modern Table */
@@ -208,7 +217,7 @@
             overflow-x: auto;
             border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            margin: 20px 0;
+            margin: 22px 0 12px;
         }
 
         table {
@@ -243,6 +252,22 @@
             background: var(--table-row-hover);
         }
 
+        .contact-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 20px 24px;
+            margin-top: 14px;
+        }
+
+        .contact-box p {
+            margin-bottom: 8px;
+        }
+
+        .contact-box p:last-child {
+            margin-bottom: 0;
+        }
+
         a {
             color: #818cf8;
             text-decoration: none;
@@ -272,7 +297,7 @@
                 padding: 36px 20px;
             }
             .hero h1 {
-                font-size: 26px;
+                font-size: 24px;
             }
             .card {
                 padding: 26px 20px;
@@ -282,50 +307,54 @@
 </head>
 <body>
     <div class="container">
+        <!-- Hero Header -->
         <header class="hero">
             <div class="hero-badge">
                 <span class="pulse"></span>
                 Official Security & Compliance
             </div>
-            <h1>Privacy Policy</h1>
-            <p class="subtitle">Document Management System</p>
+            <h1>Official Security & Compliance Privacy Policy</h1>
+            <h2 class="app-title">Document Management System</h2>
             <div class="hero-meta">
-                <span>Version 2.0</span>
-                <span>•</span>
-                <span>Last Updated: September 14, 2026</span>
+                <span><strong>Version 2.1</strong></span>
+                <span class="dot">·</span>
+                <span><strong>Last Updated: September 14, 2026</strong></span>
             </div>
         </header>
 
+        <!-- 1. Introduction -->
         <section class="card">
-            <h2><span class="section-num">1</span> Introduction</h2>
+            <h2 class="section-title"><span class="section-num">1</span> Introduction</h2>
             <p>
-                Welcome to the <strong>Document Management System</strong> ("we", "our", or "us") mobile application. 
-                This Privacy Policy outlines how we collect, handle, and safeguard your personal information when utilizing our mobile companion services.
+                Welcome to the Document Management System ("we," "our," or "us") mobile application. This Privacy Policy explains how we collect, use, and safeguard your personal information when you use our mobile companion services.
             </p>
             <p>
-                <strong>Document Management System</strong> is an enterprise and institutional companion app developed to deliver real-time push notifications, 
-                secure document tracking, and routing updates directly to authorized personnel.
+                The Document Management System is an enterprise and institutional companion app designed to deliver real-time push notifications, secure document tracking, and routing updates directly to authorized personnel.
+            </p>
+            <p>
+                By creating an account or using the application, you agree to the practices described in this Privacy Policy.
             </p>
         </section>
 
+        <!-- 2. Information We Collect -->
         <section class="card">
-            <h2><span class="section-num">2</span> Information We Collect</h2>
-            <p>We collect only the essential data required to securely operate the system and deliver alerts:</p>
+            <h2 class="section-title"><span class="section-num">2</span> Information We Collect</h2>
+            <p>We collect only the data essential to operate the system securely and deliver alerts.</p>
 
-            <h3>a. Authentication Information</h3>
+            <h3 class="subsection-title">a. Authentication Information</h3>
             <ul>
-                <li><strong>Email Address & User ID</strong> — Used to authenticate your account and securely regulate access.</li>
+                <li><strong>Email Address & User ID</strong> — Used to authenticate your account and control access.</li>
                 <li><strong>Password</strong> — Transmitted securely over encrypted HTTPS to our authentication endpoint. Passwords are never stored on your physical device.</li>
             </ul>
 
-            <h3>b. Device Identifiers</h3>
+            <h3 class="subsection-title">b. Device Identifiers</h3>
             <ul>
                 <li><strong>Firebase Cloud Messaging (FCM) Token</strong> — A unique device token generated by Google Firebase, used solely to route incoming document notifications to your mobile device.</li>
             </ul>
 
-            <h3>c. Session & Application State</h3>
+            <h3 class="subsection-title">c. Session & Application State</h3>
             <ul>
-                <li><strong>Encrypted Session Token</strong> — Stored locally on your device via secure device storage to maintain seamless access without requiring re-login on every launch.</li>
+                <li><strong>Encrypted Session Token</strong> — Stored locally on your device via secure storage to maintain seamless access without requiring you to log in on every launch.</li>
                 <li><strong>Notification Metadata</strong> — Document reference numbers, titles, timestamps, and status payloads dispatched by the backend server.</li>
             </ul>
 
@@ -342,7 +371,7 @@
                         <tr>
                             <td><strong>Email & Password</strong></td>
                             <td>Identity Verification</td>
-                            <td>Encrypted Server-Side Only</td>
+                            <td>Encrypted, Server-Side Only</td>
                         </tr>
                         <tr>
                             <td><strong>FCM Device Token</strong></td>
@@ -364,56 +393,94 @@
             </div>
         </section>
 
+        <!-- 3. How We Use Information -->
         <section class="card">
-            <h2><span class="section-num">3</span> How We Utilize Information</h2>
-            <p>We process collected information strictly for operational and security functionality:</p>
+            <h2 class="section-title"><span class="section-num">3</span> How We Use Information</h2>
+            <p>We process collected information strictly for operational and security purposes:</p>
             <ul>
-                <li><strong>Access Control:</strong> Verifying credentials against the authorized personnel directory.</li>
-                <li><strong>Real-Time Alerts:</strong> Dispatching push notifications when documents are assigned, received, or acted upon.</li>
-                <li><strong>Session Integrity:</strong> Securing access sessions and validating API requests.</li>
-                <li><strong>Document Lifecycle Tracking:</strong> Providing authorized timeline inspection and audit compliance.</li>
+                <li><strong>Access Control</strong> — Verifying credentials against the authorized personnel directory.</li>
+                <li><strong>Real-Time Alerts</strong> — Dispatching push notifications when documents are assigned, received, or acted upon.</li>
+                <li><strong>Session Integrity</strong> — Securing access sessions and validating API requests.</li>
+                <li><strong>Document Lifecycle Tracking</strong> — Supporting authorized timeline inspection and audit compliance.</li>
             </ul>
 
-            <div class="highlight">
-                <p>🛡️ <strong>Zero Advertising / Analytics Policy:</strong> We do not sell, rent, monetize, or utilize user data for commercial advertising, behavioral tracking, or data profiling.</p>
+            <div class="highlight-quote">
+                <p>🛡️ <strong>Zero Advertising / Analytics Policy:</strong> We do not sell, rent, monetize, or use your data for commercial advertising, behavioral tracking, or data profiling.</p>
             </div>
         </section>
 
+        <!-- 4. Third-Party Service Providers -->
         <section class="card">
-            <h2><span class="section-num">4</span> Third-Party Service Providers</h2>
-            <p>We do not share your information with third-party vendors except for essential infrastructure services:</p>
+            <h2 class="section-title"><span class="section-num">4</span> Third-Party Service Providers</h2>
+            <p>We do not share your information with third-party vendors except where essential to provide the service:</p>
             <ul>
-                <li><strong>Google Firebase Cloud Messaging:</strong> Utilized for dispatching cloud notifications. Firebase handles device registration tokens under <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy & Terms</a>.</li>
+                <li><strong>Google Firebase Cloud Messaging</strong> — Used to dispatch cloud notifications. Firebase handles device registration tokens under Google's own Privacy Policy and Terms of Service.</li>
+            </ul>
+            <p>We do not permit any third party to use your information for their own independent purposes.</p>
+        </section>
+
+        <!-- 5. Data Storage & Security Standards -->
+        <section class="card">
+            <h2 class="section-title"><span class="section-num">5</span> Data Storage & Security Standards</h2>
+            <ul>
+                <li>All network communications are transmitted exclusively over industry-standard HTTPS/TLS encryption.</li>
+                <li>Local authentication credentials are encrypted using the secure Android Keystore or iOS Keychain.</li>
+                <li>Account credentials and document payloads reside on protected enterprise database servers, accessible only to authorized system administrators.</li>
+                <li>Access to backend systems is restricted through role-based permissions and audit logging.</li>
             </ul>
         </section>
 
+        <!-- 6. Data Retention & Account Deletion -->
         <section class="card">
-            <h2><span class="section-num">5</span> Data Storage & Security Standards</h2>
+            <h2 class="section-title"><span class="section-num">6</span> Data Retention & Account Deletion</h2>
             <ul>
-                <li>All network communications are transmitted exclusively over industry-standard <strong>HTTPS / TLS encryption</strong>.</li>
-                <li>Local authentication credentials are encrypted using secure Android Keystore / iOS Keychain shared storage.</li>
-                <li>Account credentials and document payloads reside within protected government enterprise database servers.</li>
+                <li><strong>Device Cleanup</strong> — Logging out immediately purges the active session token from your device.</li>
+                <li><strong>FCM Token Invalidation</strong> — Device push tokens are updated or deregistered whenever an account session ends.</li>
+                <li><strong>Retention Period</strong> — Notification metadata and document tracking records are retained only for as long as necessary to fulfill audit, compliance, and operational requirements, consistent with applicable institutional record-retention policies.</li>
+                <li><strong>Right of Erasure</strong> — Users may request removal of their account and associated profile data by contacting their designated system administrator.</li>
             </ul>
         </section>
 
+        <!-- 7. Your Rights -->
         <section class="card">
-            <h2><span class="section-num">6</span> Data Retention & Account Deletion</h2>
+            <h2 class="section-title"><span class="section-num">7</span> Your Rights</h2>
+            <p>Depending on your jurisdiction and institutional policy, you may have the right to:</p>
             <ul>
-                <li><strong>Device Cleanup:</strong> Logging out immediately purges the active session token from your device.</li>
-                <li><strong>FCM Token Invalidation:</strong> Device push tokens are updated or deregistered whenever an account session ends.</li>
-                <li><strong>Right of Erasure:</strong> Users may request account and associated profile removal by contacting their designated system administrator.</li>
+                <li>Request access to the personal information we hold about you.</li>
+                <li>Request correction of inaccurate or incomplete information.</li>
+                <li>Request deletion of your account and associated data, subject to legal or audit retention obligations.</li>
+                <li>Withdraw consent where processing is based on consent, without affecting the lawfulness of processing carried out beforehand.</li>
             </ul>
+            <p>To exercise any of these rights, contact your designated system administrator or the support contact listed in Section 10.</p>
         </section>
 
+        <!-- 8. Children's Privacy -->
         <section class="card">
-            <h2><span class="section-num">7</span> Contact & Support</h2>
+            <h2 class="section-title"><span class="section-num">8</span> Children's Privacy</h2>
+            <p>
+                This application is intended solely for use by authorized personnel of institutional and enterprise organizations. It is not directed at, and we do not knowingly collect information from, individuals under the age of 18.
+            </p>
+        </section>
+
+        <!-- 9. Changes to This Policy -->
+        <section class="card">
+            <h2 class="section-title"><span class="section-num">9</span> Changes to This Policy</h2>
+            <p>
+                We may update this Privacy Policy periodically to reflect changes in our practices, technology, legal requirements, or other operational factors. Material changes will be communicated through the application or via official institutional channels, and the "Last Updated" date at the top of this document will be revised accordingly. Continued use of the application after changes take effect constitutes acceptance of the revised policy.
+            </p>
+        </section>
+
+        <!-- 10. Contact & Support -->
+        <section class="card">
+            <h2 class="section-title"><span class="section-num">10</span> Contact & Support</h2>
             <p>For questions or compliance requests regarding this Privacy Policy:</p>
-            <ul>
-                <li><strong>Organization:</strong> Document Management System Administration</li>
-                <li><strong>Support Email:</strong> support@mdms.com</li>
-            </ul>
+            <div class="contact-box">
+                <p><strong>Organization:</strong> Document Management System Administration</p>
+                <p><strong>Support Email:</strong> <a href="mailto:support@mdms.com">support@mdms.com</a></p>
+            </div>
         </section>
 
+        <!-- Footer -->
         <footer class="footer">
             <p>&copy; 2026 Document Management System. All rights reserved.</p>
             <p>Designed for Authorized Personnel & Enterprise Document Governance</p>
